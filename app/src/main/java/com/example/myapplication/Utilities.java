@@ -103,32 +103,32 @@ public class Utilities {
     sector[6]="C1";
     sector[7]="C2";
     sector[8]="C3";
-        String bw="";
-        bw+="Program of school\n";
-        int yt;
-        String wr;
-        for(int x=0; x<5; x++){
-            bw+="\n"+day[x]+"\n";
-            for(int y=0; y<7; y++){
-                yt=y+1;
-                bw+=""+yt+".)";
-                for(int z=0; z<9; z++){
-                    if(program[x][y][z]!=null&&program[x][y][z].getNameCourse()!=null){
-                        bw+=sector[z]+" "+program[x][y][z].getNameCourse();
-                        wr=program[x][y][z].getNameCourse();
-                    }
-                    else {
-                        bw+=sector[z]+" "+"FREE TIME";
-                        wr="FREE TIME";
-                    }
-                    for(int ui=0; ui<=(max-wr.length()); ui++)//evely spread writing
-                        bw+=" ";
-
+    String bw="";
+    bw+="Program of school\n";
+    int yt;
+    String wr;
+    for(int x=0; x<5; x++){
+        bw+="\n"+day[x]+"\n";
+        for(int y=0; y<7; y++){
+            yt=y+1;
+            bw+=""+yt+".)";
+            for(int z=0; z<9; z++){
+                if(program[x][y][z]!=null&&program[x][y][z].getNameCourse()!=null){
+                    bw+=sector[z]+" "+program[x][y][z].getNameCourse();
+                    wr=program[x][y][z].getNameCourse();
                 }
-                bw+="\n";
+                else {
+                    bw+=sector[z]+" "+"FREE TIME";
+                    wr="FREE TIME";
+                }
+                for(int ui=0; ui<=(max-wr.length()); ui++)//evely spread writing
+                    bw+=" ";
+
             }
+            bw+="\n";
         }
-        return bw;
+    }
+    return bw;
 
     }
 }
