@@ -1,5 +1,5 @@
-import java.io.FileWriter;
-import java.io.IOException;
+import com.example.myapplication.Utilities;
+
 import java.util.Scanner;
 public class AssigmentA{
 	public static void main(String[] args){
@@ -10,7 +10,7 @@ public class AssigmentA{
 		String teacherstxt=scanner.nextLine();
 		System.out.println("IQ:");
 		String IQ=scanner.nextLine();
-		Utilities.GO(lessonstxt,teacherstxt,IQ);
+		//Utilities.GO(lessonstxt,teacherstxt,IQ);
 	}
 
 }

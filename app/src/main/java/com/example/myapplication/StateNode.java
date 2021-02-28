@@ -1,3 +1,7 @@
+package com.example.myapplication;
+
+import com.example.myapplication.State;
+
 public class StateNode {
     private State state;
     private int value;

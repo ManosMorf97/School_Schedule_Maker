@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class Lesson{
 		private String code,nameCourse,class_s;
 		private int ammountofhours;

@@ -1,4 +1,6 @@
+package com.example.myapplication;
 
+import com.example.myapplication.Lesson;
 
 		import java.util.ArrayList;
 public class State{
@@ -64,13 +66,13 @@ public class State{
 	public void setNameLesson(Lesson L,int i,int j,int k){
 		namelessons[i][j][k]=L;
 	}
-	public void setNameTeacher(Teacher T,int i,int j,int k){
+	public void setNameTeacher(Teacher T, int i, int j, int k){
 		nameteachers[i][j][k]=T;
 	}
 	public Lesson getNameLesson(int i,int j,int k){
 		return namelessons[i][j][k];
 	}
-	public Teacher getNameTeacher(int i,int j,int k){
+	public Teacher getNameTeacher(int i, int j, int k){
 		return nameteachers[i][j][k];
 	}
 	public boolean IsAtTheSameTime(){
