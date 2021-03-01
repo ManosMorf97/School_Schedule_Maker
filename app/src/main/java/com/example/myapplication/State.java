@@ -21,7 +21,7 @@ public class State{
 		for(Teacher t:teachers){
 			who=t.getCodesoflessons();
 			for(Lesson cobralesson:who){
-				if((cobralesson.getNameCourse()).equals(namelessons[x][y][z].getNameCourse())){
+				if((cobralesson.getNameCourse()).equalsIgnoreCase(namelessons[x][y][z].getNameCourse())){
 					return t;
 
 				}
@@ -79,7 +79,7 @@ public class State{
 		if(nameteachers[x][y][z]==null) return false;
 		for(int ip=0; ip<z; ip++){
 			if(nameteachers[x][y][ip]==null) continue;
-			if(nameteachers[x][y][z].getName().equals(nameteachers[x][y][ip].getName())) return true;
+			if(nameteachers[x][y][z].getName().equalsIgnoreCase(nameteachers[x][y][ip].getName())) return true;
 		}
 		return false;
 	}
@@ -88,9 +88,9 @@ public class State{
 		if(y>1){
 			for(int w1=0; w1<=z; w1++){
 				if(nameteachers[x][y-1][w1]!=null)
-					if(nameteachers[x][y][z].getName().equals(nameteachers[x][y-1][w1].getName()))b1=true;
+					if(nameteachers[x][y][z].getName().equalsIgnoreCase(nameteachers[x][y-1][w1].getName()))b1=true;
 				if(nameteachers[x][y-2][w1]!=null)
-					if(nameteachers[x][y][z].getName().equals(nameteachers[x][y-2][w1].getName()))b2=true;
+					if(nameteachers[x][y][z].getName().equalsIgnoreCase(nameteachers[x][y-2][w1].getName()))b2=true;
 				if(b1&&b2)break;
 			}
 		}
@@ -133,7 +133,7 @@ public class State{
 		if(le==null||le.getNameCourse()==null)return false;
 		this.namelessons[x][y][z]=le;
 		this.nameteachers[x][y][z]=findTeacher();
-		if(this.IsAtTheSameTime()||!this.namelessons[x][y][z].getClassABC().equals(n())||this.namelessons[x][y][z].getAmoh()==0||this.nameteachers[x][y][z].getD(x)==0||this.nameteachers[x][y][z].getW()==0) {
+		if(this.IsAtTheSameTime()||!this.namelessons[x][y][z].getClassABC().equalsIgnoreCase(n())||this.namelessons[x][y][z].getAmoh()==0||this.nameteachers[x][y][z].getD(x)==0||this.nameteachers[x][y][z].getW()==0) {
 			return false;
 		}
 		this.namelessons[x][y][z].reduce();

@@ -7,9 +7,11 @@ import java.util.List;
 public class DataBase {
     private static ArrayList<Lesson> lessons=new ArrayList<Lesson>();
     private static ArrayList<Teacher> teachers=new ArrayList<Teacher>();
+
     public static ArrayList<Lesson> Lessons(){
         return lessons;
     }
+
     public static ArrayList<Teacher> Teachers(){
         return teachers;
     }
@@ -22,13 +24,11 @@ public class DataBase {
                 lesson=new Lesson();
                 lesson.setCode(code);
                 lesson.setNameCourse(namecourse+"_"+class_+i);
-                lesson.setClass(class_);
+                lesson.setClass(class_+i);
                 lesson.setAmmountofhours(Integer.parseInt(ammountofhours));
                 lesson.upL();
                 lessons.add(lesson);
             }
-
-
         }
 
     }
@@ -42,12 +42,13 @@ public class DataBase {
         List<String> coursess=Arrays.asList(courses.split(","));
         for(String course:coursess){
             for(Lesson l:lessons){
-                if(l.getNameCourse().equals(course)){
+                if(l.getNameCourse().equalsIgnoreCase(course)){
                     teacher.addLesson(l);
                     break;
                 }
             }
         }
+        teachers.add(teacher);
     }
 
 }

@@ -80,7 +80,11 @@ public class Utilities {
         }
     }
     static String GO(ArrayList<Lesson> lessons,ArrayList<Teacher> teachers,String IQ){
-    int max=0;//we will use it for evenly spread writing
+    int max=("FREE TIME").length();//we will use it for evenly spread writing
+    for(Lesson lesson:lessons){
+        if(max<lesson.getNameCourse().length())
+            max=lesson.getNameCourse().length();
+    }
     int depth=Integer.parseInt(IQ);
     State state=new State(lessons,teachers);
     while(!state.isTerminal()){
