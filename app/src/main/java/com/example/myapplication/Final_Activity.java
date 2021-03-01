@@ -21,7 +21,8 @@ public class Final_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_);
         ArrayList<String> schedule=DataBase.Schedule();
-        ListView listView=findViewById(R.id.list_view);
+        ListView listView=(ListView)findViewById(R.id.list_view);
         ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,schedule);
+        listView.setAdapter(arrayAdapter);
     }
 }

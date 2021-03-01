@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class IQActivity extends AppCompatActivity {
                 String IQ=etext.getText().toString();
                 ArrayList<String> schedule=Utilities.Schedule(DataBase.Lessons(),DataBase.Teachers(),IQ);
                 DataBase.setSchedule(schedule);
+                Intent activityChangeIntent = new Intent(IQActivity.this, Final_Activity.class);
+                startActivity(activityChangeIntent);
             }
         });
     }

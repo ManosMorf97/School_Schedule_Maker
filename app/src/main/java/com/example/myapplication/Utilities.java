@@ -80,18 +80,14 @@ public class Utilities {
         }
     }
     private static Lesson [][][]GO(ArrayList<Lesson> lessons,ArrayList<Teacher> teachers,String IQ){
-    int max=("FREE TIME").length();//we will use it for evenly spread writing
-    for(Lesson lesson:lessons){
-        if(max<lesson.getNameCourse().length())
-            max=lesson.getNameCourse().length();
+        int depth=Integer.parseInt(IQ);
+        State state=new State(lessons,teachers);
+        while(!state.isTerminal()){
+            state=Utilities.getBestChild(0,state,0,depth).getState();
+        }
+        return state.Program();
     }
-    int depth=Integer.parseInt(IQ);
-    State state=new State(lessons,teachers);
-    while(!state.isTerminal()){
-        state=Utilities.getBestChild(0,state,0,depth).getState();
-    }
-    return state.Program();
-    }
+
     public static ArrayList<String> Schedule(ArrayList<Lesson> lessons,ArrayList<Teacher> teachers,String IQ){
         String day[]={"Monday","Tuesday","Wednesday","Thursday","Friday"};
         String sector[]={"A1","A2","A3","B1","B2","B3","C1","C2","C3"};
@@ -105,7 +101,7 @@ public class Utilities {
                 for(int y=0; y<7; y++){
                     int v=y+1;
                     String writen="";
-                    if(Lessons[x][y][z].getNameCourse()!=null){
+                    if(Lessons[x][y][z]!=null&&Lessons[x][y][z].getNameCourse()!=null){
                         String LE=Lessons[x][y][z].getNameCourse();
                         writen=LE.substring(0,LE.indexOf("_"));
                     }else{
