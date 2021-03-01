@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,19 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".FinalActivity"
+            android:name=".Final_Activity"
+            android:label="@string/title_activity_final_"
+            android:theme="@style/Theme.MyApplication.NoActionBar"></activity>
+        <activity
+            android:name=".IQActivity"
             android:label="@string/title_activity_final"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MyApplication.NoActionBar"></activity>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".TeachersActivity"
             android:label="@string/title_activity_teachers"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".LessonsActivity"
             android:label="@string/title_activity_lessons"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -33,5 +36,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

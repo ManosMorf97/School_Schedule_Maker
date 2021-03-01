@@ -79,7 +79,7 @@ public class Utilities {
             return SN.get(maxindex);
         }
     }
-    static String GO(ArrayList<Lesson> lessons,ArrayList<Teacher> teachers,String IQ){
+    private static Lesson [][][]GO(ArrayList<Lesson> lessons,ArrayList<Teacher> teachers,String IQ){
     int max=("FREE TIME").length();//we will use it for evenly spread writing
     for(Lesson lesson:lessons){
         if(max<lesson.getNameCourse().length())
@@ -90,49 +90,31 @@ public class Utilities {
     while(!state.isTerminal()){
         state=Utilities.getBestChild(0,state,0,depth).getState();
     }
-    Lesson [][][] program=state.Program();
-    String day[]=new String[5];
-    day[0]="Monday";
-    day[1]="Tuesday";
-    day[2]="Wednesday";
-    day[3]="Thursday";
-    day[4]="Firday";
-    String sector[]=new String[9];
-    sector[0]="A1";
-    sector[1]="A2";
-    sector[2]="A3";
-    sector[3]="B1";
-    sector[4]="B2";
-    sector[5]="B3";
-    sector[6]="C1";
-    sector[7]="C2";
-    sector[8]="C3";
-    String bw="";
-    bw+="Program of school\n";
-    int yt;
-    String wr;
-    for(int x=0; x<5; x++){
-        bw+="\n"+day[x]+"\n";
-        for(int y=0; y<7; y++){
-            yt=y+1;
-            bw+=""+yt+".)";
-            for(int z=0; z<9; z++){
-                if(program[x][y][z]!=null&&program[x][y][z].getNameCourse()!=null){
-                    bw+=sector[z]+" "+program[x][y][z].getNameCourse();
-                    wr=program[x][y][z].getNameCourse();
-                }
-                else {
-                    bw+=sector[z]+" "+"FREE TIME";
-                    wr="FREE TIME";
-                }
-                for(int ui=0; ui<=(max-wr.length()); ui++)//evely spread writing
-                    bw+=" ";
-
-            }
-            bw+="\n";
-        }
+    return state.Program();
     }
-    return bw;
-
+    public static ArrayList<String> Schedule(ArrayList<Lesson> lessons,ArrayList<Teacher> teachers,String IQ){
+        String day[]={"Monday","Tuesday","Wednesday","Thursday","Friday"};
+        String sector[]={"A1","A2","A3","B1","B2","B3","C1","C2","C3"};
+        ArrayList<String>Schedule=new ArrayList<String>();
+        Lesson [][][] Lessons=GO( lessons,teachers,IQ);
+        Schedule.add("Schedule of School");
+        for(int x=0; x<5; x++){
+            Schedule.add(day[x]);
+            for(int z=0; z<9; z++){
+                Schedule.add(sector[z]);
+                for(int y=0; y<7; y++){
+                    int v=y+1;
+                    String writen="";
+                    if(Lessons[x][y][z].getNameCourse()!=null){
+                        String LE=Lessons[x][y][z].getNameCourse();
+                        writen=LE.substring(0,LE.indexOf("_"));
+                    }else{
+                        writen="FREE_TIME";
+                    }
+                    Schedule.add(v+")"+writen);
+                }
+            }
+        }
+        return Schedule;
     }
 }

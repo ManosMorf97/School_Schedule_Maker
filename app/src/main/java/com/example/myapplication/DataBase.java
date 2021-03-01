@@ -7,6 +7,13 @@ import java.util.List;
 public class DataBase {
     private static ArrayList<Lesson> lessons=new ArrayList<Lesson>();
     private static ArrayList<Teacher> teachers=new ArrayList<Teacher>();
+    private static ArrayList<String> schedule;
+    public static ArrayList<String> Schedule(){
+        return schedule;
+    }
+    public static void setSchedule(ArrayList<String> schedule_){
+        schedule=schedule_;
+    }
 
     public static ArrayList<Lesson> Lessons(){
         return lessons;
