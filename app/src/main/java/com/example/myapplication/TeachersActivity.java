@@ -28,7 +28,7 @@ public class TeachersActivity extends AppCompatActivity {
         Button Done=findViewById(R.id.button5);
         ListView listView=findViewById(R.id.list_view);
         courses=DataBase.Lessons();
-        ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,courses);
+        ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice,courses);
         listView.setAdapter(arrayAdapter);
         NextTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
