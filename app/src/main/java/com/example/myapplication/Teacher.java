@@ -5,7 +5,7 @@ import com.example.myapplication.Lesson;
 import java.util.ArrayList;
 
 public class Teacher{
-		private String code,name;
+		private String name;
 		private ArrayList<Lesson>codelessons=new ArrayList<Lesson>();
 		private int []D=new int[5];
 		private int W;
@@ -15,9 +15,6 @@ public class Teacher{
 	
 		public int getW(){
 			return W;
-		}
-		public void setCode(String codee){
-			code=codee;
 		}
 		public void setName(String namee){
 			name=namee;
@@ -34,9 +31,6 @@ public class Teacher{
 		}
 		public void setD(int i,int value){
 			D[i]=value;
-		}
-		public String getCode(){
-			return code;
 		}
 		public String getName(){
 			return name;

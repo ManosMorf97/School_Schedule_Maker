@@ -20,7 +20,6 @@ public class LessonsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lessons);
-        EditText code=findViewById(R.id.editTextTextPersonName);
         EditText namecourse=findViewById(R.id.editTextTextPersonName2);
         EditText classes=findViewById(R.id.editTextTextPersonName3);
         EditText ammountofhours=findViewById(R.id.editTextTextPersonName4);
@@ -29,9 +28,9 @@ public class LessonsActivity extends AppCompatActivity {
         NextLesson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataBase.insertLesson(code.getText().toString(),namecourse.getText().toString(),
+                DataBase.insertLesson(namecourse.getText().toString(),
                         classes.getText().toString(),ammountofhours.getText().toString());
-                EditText[] editTexts={code,namecourse,classes,ammountofhours};
+                EditText[] editTexts={namecourse,classes,ammountofhours};
                 for(EditText edit_text:editTexts)
                     edit_text.getText().clear();
             }
@@ -39,6 +38,8 @@ public class LessonsActivity extends AppCompatActivity {
         Done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DataBase.insertLesson(namecourse.getText().toString(),
+                        classes.getText().toString(),ammountofhours.getText().toString());
                 Intent activityChangeIntent = new Intent(LessonsActivity.this, TeachersActivity.class);
                 startActivity(activityChangeIntent);
 

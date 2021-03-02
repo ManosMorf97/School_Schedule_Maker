@@ -7,7 +7,6 @@ public class Utilities {
     public  static Lesson passbyValue(Lesson lesson){
         if (lesson==null) return null;
         Lesson new_lesson=new Lesson();
-        new_lesson.setCode(lesson.getCode());
         new_lesson.setNameCourse(lesson.getNameCourse());
         new_lesson.setClass(lesson.getClassABC());
         new_lesson.setAmmountofhours(lesson.getAmmount());
@@ -18,7 +17,6 @@ public class Utilities {
     public static Teacher passbyValue(Teacher teacher){
         if (teacher==null) return null;
         Teacher new_teacher=new Teacher();
-        new_teacher.setCode(teacher.getCode());
         new_teacher.setName(teacher.getName());
         new_teacher.setW(teacher.getW());
         for(int i=0; i<5; i++){

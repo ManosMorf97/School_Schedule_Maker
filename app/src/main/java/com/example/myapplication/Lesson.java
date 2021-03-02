@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 public class Lesson{
-		private String code,nameCourse,class_s;
+		private String nameCourse,class_s;
 		private int ammountofhours;
 		private int amoh;
 		private boolean active;
@@ -12,9 +12,6 @@ public class Lesson{
 		public void upL(){
 			amoh=ammountofhours;
 			active=true;
-		}
-		public void setCode(String codee){
-			code=codee;
 		}
 		public void setNameCourse(String nameCoursee){
 			nameCourse=nameCoursee;
@@ -31,9 +28,6 @@ public class Lesson{
 		}
 		public void setActive(boolean active){
 			this.active=active;
-		}
-		public String getCode(){
-			return code;
 		}
 		public String getNameCourse(){
 			return nameCourse;
@@ -55,5 +49,9 @@ public class Lesson{
 	    public void detonation(){
 	    	active=true;
 	    }
+
+	    public String toString(){
+			return this.getNameCourse();
+		}
 
 	}
