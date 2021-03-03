@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class TeachersActivity extends AppCompatActivity {
     ArrayList<Lesson> courses;
-    ArrayList<Lesson> selected_courses=new ArrayList<>();
+    ArrayList<Lesson> selected_courses=new ArrayList<Lesson>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class TeachersActivity extends AppCompatActivity {
                 EditText[] editTexts={name,max_hours_per_day,max_hours_per_week};
                 for(EditText editText:editTexts)
                     editText.getText().clear();
+                selected_courses.clear();
             }
         });
         Done.setOnClickListener(new View.OnClickListener() {
