@@ -67,6 +67,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
+                                                <entry key="color" value="b5b5b5" />
                                                 <entry key="imagePath" value="C:\Users\manos\AppData\Local\Temp\ic_android_black_24dp.xml" />
                                               </map>
                                             </option>
@@ -79,8 +80,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="D:\DownLoads\pexels-karolina-grabowska-4195410.jpg" />
-                                                <entry key="scalingPercent" value="162" />
+                                                <entry key="imagePath" value="D:\DownLoads\Paper.png" />
+                                                <entry key="scalingPercent" value="134" />
                                               </map>
                                             </option>
                                           </PersistentState>
