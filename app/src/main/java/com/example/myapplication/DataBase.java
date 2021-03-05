@@ -24,8 +24,7 @@ public class DataBase {
         return teachers;
     }
 
-    public static void insertLesson(String namecourse,String classescomma,String ammountofhours){
-        List<String> classes= Arrays.asList(classescomma.split(","));
+    public static void insertLesson(String namecourse,ArrayList<String> classes,String ammountofhours){
         Lesson lesson;
         for(String class_:classes){
             for(int i=1; i<=3; i++){
