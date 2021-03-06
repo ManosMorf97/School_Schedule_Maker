@@ -25,6 +25,7 @@ public class TeachersActivity extends AppCompatActivity {
     EditText max_hours_per_week;
     ArrayAdapter arrayAdapter;
     Context context;
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         id=0;
@@ -35,12 +36,12 @@ public class TeachersActivity extends AppCompatActivity {
         max_hours_per_week=findViewById(R.id.editTextTextPersonName8);
         Button NextTeacher=findViewById(R.id.button4);
         Button Done=findViewById(R.id.button5);
-        ListView listView=findViewById(R.id.list_view);
+        listView=findViewById(R.id.list_view);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         courses=DataBase.Lessons();
         screen_courses.addAll(courses);
         context=this;
-        arrayAdapter=new ArrayAdapter(context, android.R.layout.simple_list_item_multiple_choice,screen_courses);
-        listView.setAdapter(arrayAdapter);
+        FirstThing();
         NextTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,8 +49,7 @@ public class TeachersActivity extends AppCompatActivity {
                 EditText[] editTexts={name,max_hours_per_day,max_hours_per_week};
                 screen_courses.removeAll(selected_courses);
                 selected_courses.clear();
-                arrayAdapter=new ArrayAdapter(context, android.R.layout.simple_list_item_multiple_choice,screen_courses);
-                listView.setAdapter(arrayAdapter);
+                FirstThing();
                 for(EditText editText:editTexts)
                     editText.getText().clear();
             }
@@ -65,15 +65,27 @@ public class TeachersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(!selected_courses.contains(screen_courses.get(i)))
-                    selected_courses.add(screen_courses.get(i));
+                listView.setItemChecked(i,listView.isItemChecked(i));
+                //if(!selected_courses.contains(screen_courses.get(i)))
+                   // selected_courses.add(screen_courses.get(i));
 
             }
 
         });
     }
     public void insertData(){
+        for(int i=0; i<screen_courses.size(); i++){
+            if(listView.isItemChecked(i)){
+                selected_courses.add(screen_courses.get(i));
+            }
+        }
         DataBase.insertTeacher(name.getText().toString()+(++id),max_hours_per_day.getText().toString(),
                 max_hours_per_week.getText().toString(),selected_courses);
+    }
+    public void FirstThing(){
+        arrayAdapter=new ArrayAdapter(context, android.R.layout.simple_list_item_multiple_choice,screen_courses);
+        listView.setAdapter(arrayAdapter);
+        for(int i=0; i<screen_courses.size(); i++)
+            listView.setItemChecked(i,false);
     }
 }
