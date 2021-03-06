@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
@@ -42,6 +44,8 @@ public class LessonsActivity extends AppCompatActivity {
                 EditText[] editTexts={namecourse,ammountofhours};
                 for(EditText edit_text:editTexts)
                     edit_text.getText().clear();
+                for(CheckBox checkBox:checkBoxes)
+                   checkBox.setChecked(false);
             }
         });
         Done.setOnClickListener(new View.OnClickListener() {
