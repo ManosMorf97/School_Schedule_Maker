@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -45,21 +46,25 @@ public class TeachersActivity extends AppCompatActivity {
         NextTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertData();
-                EditText[] editTexts={name,max_hours_per_day,max_hours_per_week};
-                screen_courses.removeAll(selected_courses);
-                selected_courses.clear();
-                FirstThing();
-                for(EditText editText:editTexts)
-                    editText.getText().clear();
+                if (insertData()) {
+                   DO();
+                }
             }
         });
         Done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertData();
-                Intent activityChangeIntent = new Intent(TeachersActivity.this, IQActivity.class);
-                startActivity(activityChangeIntent);
+                if(insertData()) {
+                    if(screen_courses.isEmpty()) {
+                        Intent activityChangeIntent = new Intent(TeachersActivity.this, IQActivity.class);
+                        startActivity(activityChangeIntent);
+                    }else{
+                        DO();
+                        Toast toast=Toast.makeText(getApplicationContext(),
+                                "Some Lessons do not have teachers",Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                }
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -73,19 +78,43 @@ public class TeachersActivity extends AppCompatActivity {
 
         });
     }
-    public void insertData(){
+    public boolean insertData(){
         for(int i=0; i<screen_courses.size(); i++){
             if(listView.isItemChecked(i)){
                 selected_courses.add(screen_courses.get(i));
             }
         }
+        EditText[] editTexts={name,max_hours_per_day,max_hours_per_week};
+        boolean fieldsWriten=true;
+        for(EditText et:editTexts){
+            if(et.getText().toString().equals("")){
+                fieldsWriten=false;
+            }
+            boolean hasLessons=!selected_courses.isEmpty();
+            if(!hasLessons||!fieldsWriten){
+                Toast toast=Toast.makeText(getApplicationContext(),
+                        "You forgot to write a field and/or forgot to add Lessons",Toast.LENGTH_LONG);
+                toast.show();
+                selected_courses.clear();
+                return false;
+            }
+        }
         DataBase.insertTeacher(name.getText().toString()+(++id),max_hours_per_day.getText().toString(),
                 max_hours_per_week.getText().toString(),selected_courses);
+        screen_courses.removeAll(selected_courses);
+        selected_courses.clear();
+        return true;
     }
     public void FirstThing(){
         arrayAdapter=new ArrayAdapter(context, android.R.layout.simple_list_item_multiple_choice,screen_courses);
         listView.setAdapter(arrayAdapter);
         for(int i=0; i<screen_courses.size(); i++)
             listView.setItemChecked(i,false);
+    }
+    public void DO(){
+        EditText[] editTexts = {name, max_hours_per_day, max_hours_per_week};
+        FirstThing();
+        for (EditText editText : editTexts)
+            editText.getText().clear();
     }
 }

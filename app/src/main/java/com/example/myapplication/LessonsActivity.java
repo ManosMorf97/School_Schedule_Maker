@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -39,32 +40,42 @@ public class LessonsActivity extends AppCompatActivity {
         NextLesson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insert();
-                classes.clear();
-                EditText[] editTexts={namecourse,ammountofhours};
-                for(EditText edit_text:editTexts)
-                    edit_text.getText().clear();
-                for(CheckBox checkBox:checkBoxes)
-                   checkBox.setChecked(false);
+                if(insert()) {
+                    classes.clear();
+                    EditText[] editTexts = {namecourse, ammountofhours};
+                    for (EditText edit_text : editTexts)
+                        edit_text.getText().clear();
+                    for (CheckBox checkBox : checkBoxes)
+                        checkBox.setChecked(false);
+                }
             }
         });
         Done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insert();
-                Intent activityChangeIntent = new Intent(LessonsActivity.this, TeachersActivity.class);
-                startActivity(activityChangeIntent);
+                if(insert()) {
+                    Intent activityChangeIntent = new Intent(LessonsActivity.this, TeachersActivity.class);
+                    startActivity(activityChangeIntent);
+                }
 
             }
         });
 
     }
-    public void insert(){
+    public boolean insert(){
         for(CheckBox checkbox:checkBoxes){
             if(checkbox.isChecked()){
                 classes.add(checkbox.getText().toString());
             }
         }
+        if(classes.isEmpty()||namecourse.getText().toString().equals("")||ammountofhours.getText().toString().equals("")){
+            Toast toast=Toast.makeText(getApplicationContext(),
+                    "You forgot to write a field and/or forgot to select classes",Toast.LENGTH_LONG);
+            toast.show();
+            classes.clear();
+            return false;
+        }
         DataBase.insertLesson(namecourse.getText().toString(),classes,ammountofhours.getText().toString());
+        return true;
     }
 }
