@@ -1,3 +1,4 @@
+
 package com.example.myapplication;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +25,14 @@ public class IQActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iq);
         Button Schedule=findViewById(R.id.button6);
-        TextView text=findViewById(R.id.textView12);
         EditText etext=findViewById(R.id.editTextTextPersonName10);
+        ProgressBar progressBar=findViewById(R.id.progressBar1);
+        progressBar.setVisibility(View.GONE);
 
         Schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                text.setText("LOADING");
+                progressBar.setVisibility(View.VISIBLE);
                 String IQ=etext.getText().toString();
                 ArrayList<String> schedule=Utilities.Schedule(DataBase.Lessons(),DataBase.Teachers(),IQ);
                 DataBase.setSchedule(schedule);
