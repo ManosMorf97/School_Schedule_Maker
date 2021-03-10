@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff0000"
+    android:background="#fde64b"
     tools:context=".MainActinity">
 
 
@@ -25,7 +25,7 @@
         android:id="@+id/button"
         android:layout_width="92dp"
         android:layout_height="58dp"
-        android:backgroundTint="#fffff000"
+        android:backgroundTint="#45b6fe"
         android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

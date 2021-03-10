@@ -1,4 +1,3 @@
-
 package com.example.myapplication;
 
 import android.content.Intent;
@@ -34,8 +33,7 @@ public class IQActivity extends AppCompatActivity {
             public void onClick(View view){
                 progressBar.setVisibility(View.VISIBLE);
                 String IQ=etext.getText().toString();
-                ArrayList<String> schedule=Utilities.Schedule(DataBase.Lessons(),DataBase.Teachers(),IQ);
-                DataBase.setSchedule(schedule);
+                DataBase.setSchedule(Utilities.Schedule(DataBase.Lessons(),DataBase.Teachers(),IQ));
                 Intent activityChangeIntent = new Intent(IQActivity.this, Final_Activity.class);
                 startActivity(activityChangeIntent);
             }

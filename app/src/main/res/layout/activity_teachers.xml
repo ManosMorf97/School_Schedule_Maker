@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#add8e6"
+    android:background="#45b6fe"
     tools:context=".TeachersActivity">
 
 
