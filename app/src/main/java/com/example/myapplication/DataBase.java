@@ -1,14 +1,11 @@
 package com.example.myapplication;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class DataBase {
-    private static ArrayList<Lesson> lessons=new ArrayList<Lesson>();
-    private static ArrayList<Teacher> teachers=new ArrayList<Teacher>();
+    private final static ArrayList<Lesson> lessons=new ArrayList<>();
+    private final static ArrayList<Teacher> teachers=new ArrayList<>();
     private static ArrayList<String> schedule;
-    private static ArrayList<Lesson> checked_lessons=new ArrayList<>();
     public static ArrayList<String> Schedule(){
         return schedule;
     }

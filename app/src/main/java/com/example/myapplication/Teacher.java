@@ -1,13 +1,12 @@
 package com.example.myapplication;
 
-import com.example.myapplication.Lesson;
 
 import java.util.ArrayList;
 
 public class Teacher{
 		private String name;
-		private ArrayList<Lesson>codelessons=new ArrayList<Lesson>();
-		private int []D=new int[5];
+		private final ArrayList<Lesson>codelessons=new ArrayList<>();
+		private final int []D=new int[5];
 		private int W;
 		public int getD(int i){
 			return D[i];

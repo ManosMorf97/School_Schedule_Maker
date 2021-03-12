@@ -14,4 +14,5 @@
     <string name="title_activity_teachers">TeachersActivity</string>
     <string name="title_activity_final">FinalActivity</string>
     <string name="title_activity_final_">Final_Activity</string>
+    <string name="type_iq_in_integer_mode_iq_over_3_might_take_hours">Type IQ in integer mode(IQ over 3 might take hours)</string>
 </resources>

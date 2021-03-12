@@ -46,9 +46,6 @@ public class Lesson{
 	    public boolean Active(){
 		return active;
 	    }
-	    public void detonation(){
-	    	active=true;
-	    }
 
 	    public String toString(){
 			return this.getNameCourse();

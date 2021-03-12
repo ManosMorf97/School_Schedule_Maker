@@ -6,8 +6,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,13 +16,13 @@ import java.util.ArrayList;
 
 public class TeachersActivity extends AppCompatActivity {
     ArrayList<Lesson> courses;
-    ArrayList<Lesson> screen_courses=new ArrayList<Lesson>();
-    ArrayList<Lesson> selected_courses=new ArrayList<Lesson>();
+    ArrayList<Lesson> screen_courses=new ArrayList<>();
+    ArrayList<Lesson> selected_courses=new ArrayList<>();
     int id;
     EditText name;
     EditText max_hours_per_day;
     EditText max_hours_per_week;
-    ArrayAdapter arrayAdapter;
+
     Context context;
     ListView listView;
     @Override
@@ -43,40 +41,25 @@ public class TeachersActivity extends AppCompatActivity {
         screen_courses.addAll(courses);
         context=this;
         FirstThing();
-        NextTeacher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (insertData()) {
-                   DO();
+        NextTeacher.setOnClickListener(view -> {
+            if (insertData()) {
+               DO();
+            }
+        });
+        Done.setOnClickListener(view -> {
+            if(insertData()) {
+                if(screen_courses.isEmpty()) {
+                    Intent activityChangeIntent = new Intent(TeachersActivity.this, IQActivity.class);
+                    startActivity(activityChangeIntent);
+                }else{
+                    DO();
+                    Toast toast=Toast.makeText(getApplicationContext(),
+                            "Some Lessons do not have teachers",Toast.LENGTH_LONG);
+                    toast.show();
                 }
             }
         });
-        Done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(insertData()) {
-                    if(screen_courses.isEmpty()) {
-                        Intent activityChangeIntent = new Intent(TeachersActivity.this, IQActivity.class);
-                        startActivity(activityChangeIntent);
-                    }else{
-                        DO();
-                        Toast toast=Toast.makeText(getApplicationContext(),
-                                "Some Lessons do not have teachers",Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-                }
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                listView.setItemChecked(i,listView.isItemChecked(i));
-                //if(!selected_courses.contains(screen_courses.get(i)))
-                   // selected_courses.add(screen_courses.get(i));
-
-            }
-
-        });
+        listView.setOnItemClickListener((adapterView, view, i, l) -> listView.setItemChecked(i,listView.isItemChecked(i)));
     }
     public boolean insertData(){
         for(int i=0; i<screen_courses.size(); i++){
@@ -106,7 +89,7 @@ public class TeachersActivity extends AppCompatActivity {
         return true;
     }
     public void FirstThing(){
-        arrayAdapter=new ArrayAdapter(context, android.R.layout.simple_list_item_multiple_choice,screen_courses);
+        ArrayAdapter<Lesson> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_multiple_choice, screen_courses);
         listView.setAdapter(arrayAdapter);
         for(int i=0; i<screen_courses.size(); i++)
             listView.setItemChecked(i,false);

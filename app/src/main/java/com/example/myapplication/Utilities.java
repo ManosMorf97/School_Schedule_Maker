@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import java.io.*;
 import java.util.ArrayList;
 
 public class Utilities {
@@ -53,9 +52,9 @@ public class Utilities {
         if(n==depth||state.isTerminal()){
             return new StateNode(state,value);
         }else{
-            State states[]=new State[state.getLessons().size()];
+            State[] states=new State[state.getLessons().size()];
             ArrayList<StateNode> SN=new ArrayList<>();
-            int values[]=new int[states.length];
+            int []values=new int[states.length];
             int maxindex=0;
             for(int i=0; i<states.length; i++){
                 states[i]=Utilities.passbyValue(state);
@@ -87,9 +86,9 @@ public class Utilities {
     }
 
     public static ArrayList<String> Schedule(ArrayList<Lesson> lessons,ArrayList<Teacher> teachers,String IQ){
-        String day[]={"Monday","Tuesday","Wednesday","Thursday","Friday"};
-        String sector[]={"A1","A2","A3","B1","B2","B3","C1","C2","C3"};
-        ArrayList<String>Schedule=new ArrayList<String>();
+        String []day={"Monday","Tuesday","Wednesday","Thursday","Friday"};
+        String[] sector={"A1","A2","A3","B1","B2","B3","C1","C2","C3"};
+        ArrayList<String>Schedule=new ArrayList<>();
         Lesson [][][] Lessons=GO( lessons,teachers,IQ);
         Schedule.add("Schedule of School");
         for(int x=0; x<5; x++){
@@ -98,7 +97,7 @@ public class Utilities {
                 Schedule.add(sector[z]);
                 for(int y=0; y<7; y++){
                     int v=y+1;
-                    String writen="";
+                    String writen;
                     if(Lessons[x][y][z]!=null&&Lessons[x][y][z].getNameCourse()!=null){
                         String LE=Lessons[x][y][z].getNameCourse();
                         writen=LE.substring(0,LE.indexOf("_"));

@@ -1,13 +1,12 @@
 package com.example.myapplication;
 
-import com.example.myapplication.Lesson;
 
 		import java.util.ArrayList;
 public class State{
-	private ArrayList<Lesson> lessons;
-	private ArrayList<Teacher> teachers;
-	private Lesson[][][] namelessons=new Lesson[5][7][9];//5 days 7 hours 9 classes
-	private Teacher[][][] nameteachers=new Teacher[5][7][9];
+	private final ArrayList<Lesson> lessons;
+	private final ArrayList<Teacher> teachers;
+	private final Lesson[][][] namelessons=new Lesson[5][7][9];//5 days 7 hours 9 classes
+	private final Teacher[][][] nameteachers=new Teacher[5][7][9];
 	private int x=-1,y=0,z=0;
 	public State(ArrayList<Lesson> lessonA,ArrayList<Teacher> teachersA){
 		teachers=teachersA;
@@ -109,7 +108,8 @@ public class State{
 	}
 	public boolean EvenlySpreadDays(){
 		for(int z1=0; z1<z; z1++){
-			int sum[]=new int[5];
+			int[] sum;
+			sum = new int[5];
 			for(int x1=0; x1<x; x1++){
 				sum[x1]=0;
 				for(int y1=0; y1<y; y1++){
@@ -162,12 +162,11 @@ public class State{
 
 
 	public boolean isTerminal(){
-		if(x!=4||y!=6||z!=8) return false;
-		return true;
+		return x == 4 && y == 6 && z == 8;
 	}
 	public String n(){
 		int s=z+1;
-		String class_s="";
+		String class_s;
 		if(s<=3){
 			class_s="A"+s;
 		}else if(s<=6){
