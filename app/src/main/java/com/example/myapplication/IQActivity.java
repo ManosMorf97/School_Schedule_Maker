@@ -24,9 +24,6 @@ public class IQActivity extends AppCompatActivity {
         Schedule.setOnClickListener(view -> {
            Async execute=new Async();
            execute.execute();
-            String IQ=etext.getText().toString();
-            DataBase.setSchedule(Utilities.Schedule(DataBase.Lessons(),DataBase.Teachers(),IQ));
-
         });
     }
     @SuppressLint("StaticFieldLeak")
