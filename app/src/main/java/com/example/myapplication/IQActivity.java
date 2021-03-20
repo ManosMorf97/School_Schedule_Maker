@@ -37,6 +37,7 @@ public class IQActivity extends AppCompatActivity {
         }
         @Override
         protected void onPreExecute() {
+            dialog.setTitle("Loading this maybe take some time");
             dialog.show();
         }
 
