@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,9 +11,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
 
-public class TeachersActivity extends AppCompatActivity {
+public class TeachersActivity extends KeyboardActivity {
     ArrayList<Lesson> courses;
     ArrayList<Lesson> screen_courses=new ArrayList<>();
     ArrayList<Lesson> selected_courses=new ArrayList<>();

@@ -12,7 +12,7 @@
         <activity
             android:name=".Final_Activity"
             android:label="@string/title_activity_final_"
-            android:theme="@style/Theme.MyApplication.NoActionBar"></activity>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".IQActivity"
             android:label="@string/title_activity_final"

@@ -5,8 +5,10 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="closeKeyboard"
     android:background="#0f0"
-    tools:context=".LessonsActivity">
+    tools:context=".LessonsActivity"
+    tools:ignore="OnClick">
 
     <TextView
         android:id="@+id/textView4"

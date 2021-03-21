@@ -1,20 +1,21 @@
 package com.example.myapplication;
 
 
+
 import android.content.Intent;
 import android.os.Bundle;
 
 
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
 
-public class LessonsActivity extends AppCompatActivity {
+public class LessonsActivity extends KeyboardActivity {
     CheckBox[]checkBoxes;
     ArrayList<String> classes;
     EditText namecourse;
@@ -64,4 +65,5 @@ public class LessonsActivity extends AppCompatActivity {
         DataBase.insertLesson(namecourse.getText().toString(),classes,ammountofhours.getText().toString());
         return true;
     }
+
 }

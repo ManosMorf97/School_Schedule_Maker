@@ -5,13 +5,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 
 
 
-public class IQActivity extends AppCompatActivity {
+public class IQActivity extends KeyboardActivity {
     Button Schedule;
     EditText etext;
     @Override

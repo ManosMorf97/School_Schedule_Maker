@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffa500"
-    tools:context=".IQActivity">
+    android:onClick="closeKeyboard"
+    tools:context=".IQActivity"
+    tools:ignore="OnClick">
 
 
     <TextView
